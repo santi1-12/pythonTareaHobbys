@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Servicios - PetMarket</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">🐾 PetMarket</a>
+      <div>
+        <a class="btn btn-outline-light me-2" href="{% url 'index' %}">Inicio</a>
+        <a class="btn btn-outline-light me-2" href="{% url 'servicios' %}">servicios</a>
+        <a class="btn btn-outline-light me-2" href="{% url 'contacto' %}">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-info text-white text-center py-5">
+    <h1>Servicios para tu Mascota</h1>
+    <p class="lead">Todo lo que tu compañero necesita en un solo lugar</p>
+  </header>
+
+  <main class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow">
+          <div class="card-body">
+            <h5 class="card-title">Baño y peluquería</h5>
+            <p class="card-text">Deja a tu mascota reluciente con nuestros servicios de grooming profesional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow">
+          <div class="card-body">
+            <h5 class="card-title">Consultas veterinarias</h5>
+            <p class="card-text">Chequeos generales, vacunación, y atención de confianza para su salud.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow">
+          <div class="card-body">
+            <h5 class="card-title">Entrenamiento canino</h5>
+            <p class="card-text">Clases de obediencia y comportamiento impartidas por expertos certificados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
