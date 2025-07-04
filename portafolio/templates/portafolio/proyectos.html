@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portafolio</title>
+</head>
+<body>
+    <h1>Proyectos</h1>
+    <ul>
+        {% for proyecto in proyectos %}
+            <li>{{ proyecto.titulo }} - {{ proyecto.descripcion }} - {{ proyecto.fecha }}</li>
+        {% empty %}
+            <li>No hay proyectos</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Habilidades</h1>
+    <ul>
+        {% for habilidad in habilidades %}
+            <li>{{ habilidad.nombre }} - {{ habilidad.nivel }}</li>
+        {% empty %}
+            <li>No hay habilidades</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
