@@ -14,7 +14,7 @@ class proyecto(models.Model):
 
 class Habilidad(models.Model):
     NIVELES = [
-        ('Básico', 'Básico'),
+         ('Básico', 'Básico'),
         ('Intermedio', 'Intermedio'),
         ('Avanzado', 'Avanzado'),
     ]

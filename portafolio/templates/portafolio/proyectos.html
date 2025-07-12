@@ -1,25 +1,119 @@
+<!-- templates/portafolio/proyectos.html -->
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Portafolio</title>
+    <meta charset="UTF-8">
+    <title>Proyectos y Habilidades</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            margin: 5px 0;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn.add    { background-color: #28a745; }
+        .btn.edit   { background-color: #ffc107; color: #222; }
+        .btn.delete { background-color: #dc3545; }
+        .btn.cancel { background-color: #6c757d; }
+        .btn.save   { background-color: #007bff; }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        .acciones {
+            margin-top: 10px;
+        }
+
+        hr {
+            margin: 40px 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
-    <h1>Proyectos</h1>
-    <ul>
-        {% for proyecto in proyectos %}
-            <li>{{ proyecto.titulo }} - {{ proyecto.descripcion }} - {{ proyecto.fecha }}</li>
-        {% empty %}
-            <li>No hay proyectos</li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <h1>🌟 Mis Proyectos</h1>
+    <a class="btn add" href="{% url 'agregar_proyecto' %}">➕ Agregar Proyecto</a>
 
-    <h1>Habilidades</h1>
-    <ul>
-        {% for habilidad in habilidades %}
-            <li>{{ habilidad.nombre }} - {{ habilidad.nivel }}</li>
+    <div class="proyecto-lista">
+        {% for proyecto in proyectos %}
+            <div class="card">
+                <h3>{{ proyecto.titulo }}</h3>
+                <h3>{{ proyecto.nombre }}</h3>
+                <p>{{ proyecto.descripcion }}</p>
+                <div class="acciones">
+                    <a class="btn edit" href="{% url 'editar_proyecto' proyecto.id %}">✏️ Editar</a>
+                    <a class="btn delete" href="{% url 'eliminar_proyecto' proyecto.id %}">🗑️ Eliminar</a>
+                </div>
+            </div>
         {% empty %}
-            <li>No hay habilidades</li>
+            <p>No hay proyectos aún.</p>
         {% endfor %}
-    </ul>
+    </div>
+
+    <hr>
+
+    <h1>🛠️ Habilidades</h1>
+    <a class="btn add" href="{% url 'agregar_habilidad' %}">➕ Agregar Habilidad</a>
+
+    <div class="proyecto-lista">
+        {% for habilidad in habilidades %}
+            <div class="card">
+                <h3>{{ habilidad.nombre }}</h3>
+                <div class="acciones">
+                    <a class="btn edit" href="{% url 'editar_habilidad' habilidad.id %}">✏️ Editar</a>
+                    <a class="btn delete" href="{% url 'eliminar_habilidad' habilidad.id %}">🗑️ Eliminar</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>No hay habilidades aún.</p>
+        {% endfor %}
+    </div>
+</div>
 </body>
 </html>

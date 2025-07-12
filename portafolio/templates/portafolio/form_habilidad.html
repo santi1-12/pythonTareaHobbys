@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #eef2f7;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        form p {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            margin-top: 10px;
+            font-weight: bold;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn.save   { background-color: #007bff; }
+        .btn.cancel { background-color: #6c757d; text-decoration: none; padding: 10px 14px; }
+        .btn:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>{{ titulo }}</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <p>
+            <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+            {{ form.nombre }}
+        </p>
+
+        <p>
+            <label for="{{ form.nivel.id_for_label }}">Nivel:</label>
+            {{ form.nivel }}
+        </p>
+
+        <button type="submit" class="btn save">💾 Guardar</button>
+        <a href="{% url 'mostrar_proyectos' %}" class="btn cancel">⬅️ Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

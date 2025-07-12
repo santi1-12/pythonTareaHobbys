@@ -1,0 +1,7 @@
+<h2>{{ form.instance.pk|yesno:"Editar Proyecto,Agregar Proyecto" }}</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'mostrar_proyectos' %}">Volver</a>
