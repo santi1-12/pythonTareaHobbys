@@ -19,20 +19,19 @@
   <body>
 
     <div class="generalContainer">
-    <header>
-      <img src="../../static/img/Frame 7.png" alt="" />
+      <header>
+        <img src="../../static/img/Frame 7.png" alt="" />
+        <nav>
+          <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'video' %}">Videos</a></li>
+            <li><a href="{% url 'servicios' %}">Servicios</a></li>
+            <li><a href="{% url 'contacto' %}">Contact</a></li>
+          </ul>
+        </nav>
 
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="experience.html">Experiece</a></li>
-          <li><a href="contacto.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <button type="button" id="botondia" >Ligth-mode</button>
-    </header>
+        <a id="botonhire" href="contacto.html">Hire Me</a>
+      </header>
 
     <form class="formulario">
 

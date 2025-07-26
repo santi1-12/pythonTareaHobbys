@@ -9,5 +9,8 @@ def servicios(request):
 def contacto(request):
     return render(request, 'nosotros/contacto.html')
 
-def galeriavideos(request):
+def video(request):
     return render(request, 'nosotros/galeriavideos.html')
+
+def proyectos(request):
+    return render(request, 'portafolio/proyectos.html')
