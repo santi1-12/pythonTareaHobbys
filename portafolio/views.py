@@ -89,22 +89,41 @@ class ExperienciaListView(ListView):
     template_name = 'portafolio/experiencia_list.html'
     context_object_name = 'experiencias'
 
+
 class ExperienciaCreateView(CreateView):
     model = Experiencia
-    fields = ['empresa', 'puesto', 'descripcion']
+    fields = ['empresa', 'puesto', 'descripcion', 'fecha_inicio', 'fecha_fin']
     template_name = 'portafolio/form_generic.html'
     success_url = reverse_lazy('experiencia_list')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Agregar Experiencia'
+        return context
+
+
 class ExperienciaUpdateView(UpdateView):
     model = Experiencia
-    fields = ['empresa', 'puesto', 'descripcion'] 
+    fields = ['empresa', 'puesto', 'descripcion', 'fecha_inicio', 'fecha_fin']
     template_name = 'portafolio/form_generic.html'
     success_url = reverse_lazy('experiencia_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Editar Experiencia'
+        return context
+
 
 class ExperienciaDeleteView(DeleteView):
     model = Experiencia
     template_name = 'portafolio/confirm_delete.html'
     success_url = reverse_lazy('experiencia_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Eliminar Experiencia'
+        return context
+
 
 # Estudios
 class EstudioListView(ListView):
