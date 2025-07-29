@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portafolio</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #eef2f7;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 400px;
+        margin: 80px auto;
+        background: white;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      h1 {
+        margin-bottom: 30px;
+        color: #333;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        margin: 12px 0;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      .btn.proyectos {
+        background: #28a745;
+      }
+      .btn.experiencia {
+        background: #17a2b8;
+      }
+      .btn.estudios {
+        background: #6f42c1;
+      }
+      .btn.hobbies {
+        background: #fd7e14;
+      }
+      .btn:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bienvenido a mi Portafolio</h1>
+      <a href="{% url 'mostrar_proyectos' %}" class="btn proyectos"
+        >🌟 Proyectos y Habilidades</a
+      >
+      <a href="{% url 'experiencia_list' %}" class="btn experiencia"
+        >💼 Experiencia Laboral</a
+      >
+      <a href="{% url 'estudios_list' %}" class="btn estudios">🎓 Estudios</a>
+      <a href="{% url 'hobbies_list' %}" class="btn hobbies"
+        >🎮 Hobbies / Pasatiempos</a
+      >
+    </div>
+  </body>
+</html>

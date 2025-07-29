@@ -21,12 +21,13 @@ from django.urls import path,include
 
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
-    path('', include('nosotros.urls')),
     path('proyectos/', include('portafolio.urls')),
-    path('video/', include('nosotros.urls')),
-    path('servicios/', include('nosotros.urls')),
-    path('contacto/', include('nosotros.urls')),
-    path('proyectos/', include('nosotros.urls')),
+    path('', include('portafolio.urls')),
+    path('experiencia/', include('portafolio.urls')),
+    path('estudios/', include('portafolio.urls')),
+    path('hobbies/', include('portafolio.urls')),
+
 ]
 

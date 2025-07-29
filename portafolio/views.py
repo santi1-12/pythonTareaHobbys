@@ -1,8 +1,14 @@
 from django.shortcuts import render
-from .models import proyecto, Habilidad
-from .forms import proyectoForm
-from .forms import HabilidadForm
+from .models import proyecto, Habilidad, Experiencia, Estudio, Hobby
+from .forms import HabilidadForm, ExperienciaForm, EstudioForm, HobbyForm,proyectoForm
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+
+
+def index(request):
+    # puedes pasar contexto si quieres
+    return render(request, 'portafolio/index.html')
 
 def mostrar_proyectos(request):
     proyectos = proyecto.objects.all()
@@ -75,3 +81,74 @@ def eliminar_habilidad(request, habilidad_id):
         habilidad.delete()
         return redirect('mostrar_proyectos')
     return render(request, 'portafolio/eliminar_habilidad.html', {'proyecto': habilidad, 'tipo': 'habilidad'})
+
+
+# Experiencia
+class ExperienciaListView(ListView):
+    model = Experiencia
+    template_name = 'portafolio/experiencia_list.html'
+    context_object_name = 'experiencias'
+
+class ExperienciaCreateView(CreateView):
+    model = Experiencia
+    fields = ['empresa', 'puesto', 'descripcion']
+    template_name = 'portafolio/form_generic.html'
+    success_url = reverse_lazy('experiencia_list')
+
+class ExperienciaUpdateView(UpdateView):
+    model = Experiencia
+    fields = ['empresa', 'puesto', 'descripcion'] 
+    template_name = 'portafolio/form_generic.html'
+    success_url = reverse_lazy('experiencia_list')
+
+class ExperienciaDeleteView(DeleteView):
+    model = Experiencia
+    template_name = 'portafolio/confirm_delete.html'
+    success_url = reverse_lazy('experiencia_list')
+
+# Estudios
+class EstudioListView(ListView):
+    model = Estudio
+    template_name = 'portafolio/estudios_list.html'
+    context_object_name = 'estudios'
+
+class EstudioCreateView(CreateView):
+    model = Estudio
+    fields = ['institucion', 'titulo', 'fecha_inicio', 'fecha_fin']
+    template_name = 'portafolio/form_generic.html'
+    success_url = reverse_lazy('estudios_list')
+
+class EstudioUpdateView(UpdateView):
+    model = Estudio
+    fields = ['institucion', 'titulo', 'fecha_inicio', 'fecha_fin']
+    template_name = 'portafolio/form_generic.html'
+    success_url = reverse_lazy('estudios_list')
+
+class EstudioDeleteView(DeleteView):
+    model = Estudio
+    template_name = 'portafolio/confirm_delete.html'
+    success_url = reverse_lazy('estudios_list')
+
+# Hobbies
+class HobbyListView(ListView):
+    model = Hobby
+    template_name = 'portafolio/hobbies_list.html'
+    context_object_name = 'hobbies'
+
+class HobbyCreateView(CreateView):
+    model = Hobby
+    fields = ['nombre', 'descripcion']
+    template_name = 'portafolio/form_generic.html'
+    success_url = reverse_lazy('hobbies_list')
+
+class HobbyUpdateView(UpdateView):
+    model = Hobby
+    fields = ['nombre', 'descripcion']
+    template_name = 'portafolio/form_generic.html'
+    success_url = reverse_lazy('hobbies_list')
+
+class HobbyDeleteView(DeleteView):
+    model = Hobby
+    template_name = 'portafolio/confirm_delete.html'
+    success_url = reverse_lazy('hobbies_list')
+

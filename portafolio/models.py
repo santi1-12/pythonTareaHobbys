@@ -23,3 +23,31 @@ class Habilidad(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.nivel})"
+
+
+
+class Experiencia(models.Model):
+    empresa = models.CharField(max_length=100)
+    puesto = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.puesto} en {self.empresa}"
+
+class Estudio(models.Model):
+    institucion = models.CharField(max_length=100)
+    titulo = models.CharField(max_length=150)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.titulo} - {self.institucion}"
+
+class Hobby(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.nombre
