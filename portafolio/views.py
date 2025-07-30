@@ -10,6 +10,9 @@ def index(request):
     # puedes pasar contexto si quieres
     return render(request, 'portafolio/index.html')
 
+def contacto(request):
+    return render(request, 'portafolio/contacto.html')
+
 def mostrar_proyectos(request):
     proyectos = proyecto.objects.all()
     habilidades = Habilidad.objects.all()

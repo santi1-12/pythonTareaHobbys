@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contacto</title>
+    <style>
+     body {
+        background-image: url("https://images6.alphacoders.com/648/648552.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+      }
+      .form-container {
+        max-width: 600px;
+        margin: auto;
+        margin-top: 5%;
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      button {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Contáctame</h2>
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Tu nombre" required />
+        <input
+          type="email"
+          name="email"
+          placeholder="Tu correo electrónico"
+          required
+        />
+        <textarea
+          name="mensaje"
+          rows="5"
+          placeholder="Escribe tu mensaje..."
+          required
+        ></textarea>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+    </div>
+  </body>
+</html>

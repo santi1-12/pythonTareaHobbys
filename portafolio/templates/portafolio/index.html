@@ -3,74 +3,199 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Portafolio</title>
+    <title>Mi Portafolio</title>
     <style>
       body {
-        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJgFpQFwAKbQBEOldVN557nW2zpJHObM7ndg&s');
+        background-image: url("https://images6.alphacoders.com/648/648552.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        font-family: 'Segoe UI', sans-serif;
         margin: 0;
         padding: 0;
+        font-family: "Segoe UI", sans-serif;
       }
-      .container {
-        max-width: 400px;
-        margin: 80px auto;
+
+      .content-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 50px;
+        padding-bottom: 80px; /* para dar espacio al footer */
+      }
+
+      .main-container {
+        display: flex;
         background: white;
-        padding: 40px 30px;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        text-align: center;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        max-width: 900px;
+        width: 100%;
       }
-      h1 {
-        margin-bottom: 30px;
+
+      .profile-pic {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 40px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .info {
+        flex: 1;
+      }
+
+      .info h1 {
+        margin: 0;
+        font-size: 32px;
         color: #333;
       }
-      .btn {
-        display: block;
-        width: 100%;
-        margin: 12px 0;
-        padding: 12px;
+
+      .info p {
         font-size: 16px;
-        font-weight: 600;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        border: none;
-        cursor: pointer;
-        transition: background 0.3s ease;
+        color: #666;
+        margin: 10px 0 30px;
       }
-      .btn.proyectos {
+
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border-radius: 30px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 14px;
+        transition: opacity 0.3s;
+      }
+
+      .btn:hover {
+        opacity: 0.85;
+      }
+
+      .proyectos {
         background: #28a745;
       }
-      .btn.experiencia {
+      .experiencia {
         background: #17a2b8;
       }
-      .btn.estudios {
+      .estudios {
         background: #6f42c1;
       }
-      .btn.hobbies {
+      .hobbies {
         background: #fd7e14;
       }
-      .btn:hover {
-        opacity: 0.9;
+
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+      }
+
+      footer a img {
+        margin: 0 10px;
+      }
+
+      @media (max-width: 768px) {
+        .main-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .profile-pic {
+          margin: 0 0 20px;
+        }
+
+        .buttons {
+          justify-content: center;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Bienvenido a mi Portafolio</h1>
-      <a href="{% url 'mostrar_proyectos' %}" class="btn proyectos"
-        >🌟 Proyectos y Habilidades</a
-      >
-      <a href="{% url 'experiencia_list' %}" class="btn experiencia"
-        >💼 Experiencia Laboral</a
-      >
-      <a href="{% url 'estudios_list' %}" class="btn estudios">🎓 Estudios</a>
-      <a href="{% url 'hobbies_list' %}" class="btn hobbies"
-        >🎮 Hobbies / Pasatiempos</a
-      >
+    <div class="content-wrapper">
+      <div class="main-container">
+        <img
+          class="profile-pic"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQarcR3x8GGYuMOMK4DUCfd9xqWdorOOWMLEg&s"
+          alt="Mi foto"
+        />
+        <div class="info">
+          <h1>Andres Albeiro Gutierrez Montoya</h1>
+          <p>
+            Soy estudiante / profesional entusiasta con experiencia en Sistemas.
+            Este portafolio contiene mis proyectos, experiencia laboral y más
+            sobre mí.
+          </p>
+          <div class="buttons">
+            <a href="{% url 'mostrar_proyectos' %}" class="btn proyectos"
+              >🌟 Proyectos</a
+            >
+            <a href="{% url 'experiencia_list' %}" class="btn experiencia"
+              >💼 Experiencia</a
+            >
+            <a href="{% url 'estudios_list' %}" class="btn estudios"
+              >🎓 Estudios</a
+            >
+            <a href="{% url 'hobbies_list' %}" class="btn hobbies"
+              >🎮 Hobbies</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        <a href="https://facebook.com/Andres Gutierrez" target="_blank">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/145/145802.png"
+            width="30"
+            alt="Facebook"
+          />
+        </a>
+        <a href="https://github.com/AndresGutierrez1992" target="_blank">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/733/733553.png"
+            width="30"
+            alt="GitHub"
+          />
+        </a>
+        <a href="https://linkedin.com/in/Andres Gutierrez" target="_blank">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+            width="30"
+            alt="LinkedIn"
+          />
+        </a>
+      </div>
+
+      <div style="margin-top: 15px">
+        <a
+          href="{% url 'contacto' %}"
+          class="btn"
+          style="
+            background: #343a40;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+          "
+        >
+          ✉️ Contactar
+        </a>
+      </div>
+    </footer>
   </body>
 </html>
