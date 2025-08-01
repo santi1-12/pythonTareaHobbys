@@ -1,125 +1,98 @@
-<!-- templates/portafolio/proyectos.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Proyectos y Habilidades</title>
-    <style>
-      body {
-        background-image: url("https://images6.alphacoders.com/648/648552.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        margin: 0;
-        padding: 0;
-        font-family: "Segoe UI", sans-serif;
-      }
+  <meta charset="UTF-8">
+  <title>Proyectos y Habilidades</title>
 
-        .container {
-            width: 90%;
-            max-width: 900px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 25px;
-        }
+  <style>
+    body {
+      background-image: url("https://images6.alphacoders.com/648/648552.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 16px;
-            margin: 5px 0;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s ease;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+    .bg-white-blur {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+    }
 
-        .btn.add    { background-color: #28a745; }
-        .btn.edit   { background-color: #ffc107; color: #222; }
-        .btn.delete { background-color: #dc3545; }
-        .btn.cancel { background-color: #6c757d; }
-        .btn.save   { background-color: #007bff; }
+    .card h5 {
+      color: #222;
+    }
 
-        .btn:hover {
-            opacity: 0.9;
-        }
+    .acciones a {
+      margin-right: 10px;
+    }
 
-        .card {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: #222;
-        }
-
-        .acciones {
-            margin-top: 10px;
-        }
-
-        hr {
-            margin: 40px 0;
-            border: none;
-            border-top: 1px solid #ddd;
-        }
-    </style>
+    hr {
+      margin: 50px 0 30px;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-    <h1>🌟 Mis Proyectos</h1>
-    <a class="btn add" href="{% url 'agregar_proyecto' %}">➕ Agregar Proyecto</a>
-    <a class="btn add" href="{% url 'index' %}">Volver a Inicio</a>
+  <div class="container bg-white-blur">
+    <h1 class="text-center mb-4">🌟 Mis Proyectos</h1>
 
-    <div class="proyecto-lista">
-        {% for proyecto in proyectos %}
-            <div class="card">
-                <h3>{{ proyecto.titulo }}</h3>
-                <h3>{{ proyecto.nombre }}</h3>
-                <p>{{ proyecto.descripcion }}</p>
-                <div class="acciones">
-                    <a class="btn edit" href="{% url 'editar_proyecto' proyecto.id %}">✏️ Editar</a>
-                    <a class="btn delete" href="{% url 'eliminar_proyecto' proyecto.id %}">🗑️ Eliminar</a>
-                </div>
-            </div>
-        {% empty %}
-            <p>No hay proyectos aún.</p>
-        {% endfor %}
+    <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+      <a class="btn btn-success" href="{% url 'agregar_proyecto' %}">➕ Agregar Proyecto</a>
+      <a class="btn btn-secondary" href="{% url 'index' %}">🏠 Volver a Inicio</a>
     </div>
+
+    {% for proyecto in proyectos %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ proyecto.titulo }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ proyecto.nombre }}</h6>
+          <p class="card-text">{{ proyecto.descripcion }}</p>
+          <div class="acciones">
+            <a class="btn btn-warning btn-sm" href="{% url 'editar_proyecto' proyecto.id %}">✏️ Editar</a>
+            <a class="btn btn-danger btn-sm" href="{% url 'eliminar_proyecto' proyecto.id %}">🗑️ Eliminar</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="alert alert-info text-center">No hay proyectos aún.</div>
+    {% endfor %}
 
     <hr>
 
-    <h1>🛠️ Habilidades</h1>
-    <a class="btn add" href="{% url 'agregar_habilidad' %}">➕ Agregar Habilidad</a>
-    <a class="btn add" href="{% url 'index' %}">Volver a Inicio</a>
+   <h1 class="text-center mb-4">🛠️ Habilidades</h1>
 
-    <div class="proyecto-lista">
-        {% for habilidad in habilidades %}
-            <div class="card">
-                <h3>{{ habilidad.nombre }}</h3>
-                <div class="acciones">
-                    <a class="btn edit" href="{% url 'editar_habilidad' habilidad.id %}">✏️ Editar</a>
-                    <a class="btn delete" href="{% url 'eliminar_habilidad' habilidad.id %}">🗑️ Eliminar</a>
-                </div>
-            </div>
-        {% empty %}
-            <p>No hay habilidades aún.</p>
-        {% endfor %}
-    </div>
+<div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+  <a class="btn btn-success" href="{% url 'agregar_habilidad' %}">➕ Agregar Habilidad</a>
+  <a class="btn btn-secondary" href="{% url 'index' %}">🏠 Volver a Inicio</a>
 </div>
+
+{% for habilidad in habilidades %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="mb-0">{{ habilidad.nombre }}</h5>
+      <h5 class="mb-0">{{ habilidad.nivel }}</h5>
+      <br>
+      <div class="acciones">
+        <a class="btn btn-warning btn-sm" href="{% url 'editar_habilidad' habilidad.id %}">✏️ Editar</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'eliminar_habilidad' habilidad.id %}">🗑️ Eliminar</a>
+      </div>
+    </div>
+  </div>
+{% empty %}
+  <div class="alert alert-info text-center">No hay habilidades aún.</div>
+{% endfor %}
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
