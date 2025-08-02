@@ -4,73 +4,124 @@
 <head>
   <meta charset="UTF-8">
   <title>Mi Portafolio</title>
-  <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-image: url("https://images6.alphacoders.com/648/648552.jpg");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background: linear-gradient(120deg, #1e3c72, #2a5298);
       min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
       display: flex;
       flex-direction: column;
     }
 
     .overlay {
       flex: 1;
-      background: rgba(255,255,255,0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 0;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 2rem auto;
+      width: 95%;
+      max-width: 1000px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
     .profile-pic {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      object-fit: cover;
+      border: 4px solid #ffffff33;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s;
     }
 
-    .btn-contact {
-      background-color: #343a40;
-      color: white;
+    .profile-pic:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-custom {
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
     }
 
     .social-icon {
-      width: 30px;
-      margin: 0 10px;
+      width: 32px;
+      height: 32px;
+      margin: 0 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.2);
+    }
+
+    footer {
+      background: #0d1117;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    footer a.btn-contact {
+      background: #00c896;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      margin-top: 1rem;
+      padding: 0.6rem 1.6rem;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+
+    footer a.btn-contact:hover {
+      background: #00b285;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    p.lead {
+      color: #e0e0e0;
     }
   </style>
 </head>
 <body>
 
-  <div class="overlay">
-    <div class="container text-center">
-      <div class="row align-items-center gx-4 gy-4">
-        <div class="col-md-4">
-          <img src="https://media.licdn.com/dms/image/v2/D4E03AQFMfMXp-81TYA/profile-displayphoto-shrink_200_200/B4EZcT8qp.HQAY-/0/1748386361066?e=2147483647&v=beta&t=Nw2QRL1Et8bSGB8eAW7_cseCuuAGAGJKbFDhNp10scg" alt="Mi foto" class="profile-pic mx-auto d-block">
-        </div>
-        <div class="col-md-8">
-          <h1>Andres Albeiro Gutierrez Montoya</h1>
-          <p class="lead text-muted">
-            Soy estudiante / profesional entusiasta con experiencia en Sistemas. Este portafolio contiene mis proyectos, experiencia laboral y más sobre mí.
-          </p>
-          <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
-            <a href="{% url 'mostrar_proyectos' %}" class="btn btn-success">🌟 Proyectos</a>
-            <a href="{% url 'experiencia_list' %}" class="btn btn-info">💼 Experiencia</a>
-            <a href="{% url 'estudios_list' %}" class="btn btn-primary">🎓 Estudios</a>
-            <a href="{% url 'hobbies_list' %}" class="btn btn-warning text-dark">🎮 Hobbies</a>
-          </div>
+  <div class="overlay text-center">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <img src="https://st3.depositphotos.com/4111759/13425/v/1600/depositphotos_134255588-stock-illustration-empty-photo-of-male-profile.jpg" alt="Mi foto" class="profile-pic mx-auto">
+      </div>
+      <div class="col-md-8">
+        <h1>Tu Nombre</h1>
+        <p class="lead">
+          Soy estudiante con interés en el área de Sistemas. En este portafolio comparto algunos de mis proyectos, mi experiencia laboral y un poco más sobre mí.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+          <a href="{% url 'mostrar_proyectos' %}" class="btn btn-success btn-custom">🛠 Proyectos</a>
+          <a href="{% url 'experiencia_list' %}" class="btn btn-info btn-custom">💼 Experiencia</a>
+          <a href="{% url 'estudios_list' %}" class="btn btn-primary btn-custom">🎓 Estudios</a>
+          <a href="{% url 'hobbies_list' %}" class="btn btn-warning btn-custom text-dark">🎮 Hobbies</a>
         </div>
       </div>
     </div>
   </div>
 
-  <footer class="bg-dark text-center text-white py-3">
-    <div class="mb-2">
+  <footer>
+    <div class="mb-3">
       <a href="https://www.facebook.com/andres.gutierrez.424774?mibextid=ZbWKwL" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" class="social-icon" alt="Facebook">
       </a>
@@ -84,7 +135,6 @@
     <a href="{% url 'contacto' %}" class="btn btn-contact">✉️ Contactar</a>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
