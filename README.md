@@ -1,2 +1,3 @@
+<<<<<<< HEAD
 # pythonTareaHobbys
-# pythonTareaHobbys
+=======
